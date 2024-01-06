@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "api"
+version = "0.1.0"
+description = ""
+authors = ["IosifBrudnyi"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+fastapi = {extras = ["all"], version = "^0.108.0"}
+pytz = "^2023.3.post1"
+telegram = "^0.0.1"
+asyncpg = "^0.29.0"
+aiopg = "^1.4.0"
+python-dotenv = "^1.0.0"
+yoyo-migrations = "^8.2.0"
+python-telegram-bot = "^20.7"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+start = "main:main"
+

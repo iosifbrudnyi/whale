@@ -1,0 +1,25 @@
+version: '3.9'
+services:
+  db:
+    image: postgres:latest
+    ports:
+      - 5433:5432
+    env_file:
+      - .env
+    healthcheck:
+      test: pg_isready -U ${POSTGRES_USER} -d db
+      interval: 3s
+      timeout: 3s
+      retries: 3
+  
+  backend:
+      build: 
+        context: .
+      ports:
+        - 8000:8000
+      entrypoint: "./run-app.sh" 
+      env_file:
+        - .env
+      depends_on:
+        db:
+          condition: service_healthy
